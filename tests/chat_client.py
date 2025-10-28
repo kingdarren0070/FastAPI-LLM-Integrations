@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-"""
-Simple Python client for the FastAPI chatbot
-"""
-
 import requests
 import json
 import sys
@@ -10,7 +5,6 @@ import sys
 API_BASE_URL = "http://localhost:8000"
 
 def chat_with_bot(message, conversation_history=None):
-    """Send a message to the chatbot and get a response"""
     if conversation_history is None:
         conversation_history = []
     
@@ -35,7 +29,6 @@ def chat_with_bot(message, conversation_history=None):
         return {"error": str(e)}
 
 def interactive_chat():
-    """Start an interactive chat session"""
     print("FastAPI Chatbot Client")
     print("=" * 40)
     print("Type 'quit' or 'exit' to end the conversation")
@@ -74,7 +67,6 @@ def interactive_chat():
             print(f"Unexpected error: {e}")
 
 def single_message(message):
-    """Send a single message and print the response"""
     result = chat_with_bot(message)
     
     if "error" in result:
@@ -84,9 +76,7 @@ def single_message(message):
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        # Command line argument provided - send single message
         message = " ".join(sys.argv[1:])
         single_message(message)
     else:
-        # No arguments - start interactive mode
         interactive_chat()

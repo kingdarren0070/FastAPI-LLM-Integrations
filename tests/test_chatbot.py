@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Simple test script for the FastAPI chatbot
-Run this after starting the server to test the chatbot functionality
-"""
-
 import requests
 import json
 import time
@@ -11,11 +5,9 @@ import time
 API_BASE_URL = "http://localhost:8000"
 
 def test_chatbot():
-    """Test the chatbot functionality"""
     print("Testing FastAPI Chatbot")
     print("=" * 50)
     
-    # Test messages
     test_messages = [
         "Hello! How are you?",
         "What's the weather like today?",
@@ -30,7 +22,6 @@ def test_chatbot():
         print("-" * 30)
         
         try:
-            # Send message to chatbot
             response = requests.post(
                 f"{API_BASE_URL}/chat",
                 json={
@@ -53,17 +44,13 @@ def test_chatbot():
         except Exception as e:
             print(f"Error: {e}")
         
-        # Small delay between messages
         time.sleep(1)
     
     print("\nChatbot test completed!")
-
 
 if __name__ == "__main__":
     print("Starting FastAPI Chatbot Tests")
     print("Make sure the server is running: python main.py")
     print()
-    
-    # Test chatbot
     test_chatbot()
 
