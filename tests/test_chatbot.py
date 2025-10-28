@@ -12,7 +12,7 @@ API_BASE_URL = "http://localhost:8000"
 
 def test_chatbot():
     """Test the chatbot functionality"""
-    print("🤖 Testing FastAPI Chatbot")
+    print("Testing FastAPI Chatbot")
     print("=" * 50)
     
     # Test messages
@@ -26,7 +26,7 @@ def test_chatbot():
     conversation_history = []
     
     for i, message in enumerate(test_messages, 1):
-        print(f"\n📝 Test {i}: {message}")
+        print(f"\nTest {i}: {message}")
         print("-" * 30)
         
         try:
@@ -42,42 +42,27 @@ def test_chatbot():
             
             if response.status_code == 200:
                 data = response.json()
-                print(f"🤖 Bot: {data['response']}")
+                print(f"Bot: {data['response']}")
                 conversation_history = data['conversation_history']
             else:
-                print(f"❌ Error: {response.status_code} - {response.text}")
+                print(f"Error: {response.status_code} - {response.text}")
                 
         except requests.exceptions.ConnectionError:
-            print("❌ Error: Could not connect to server. Make sure the server is running on http://localhost:8000")
+            print("Error: Could not connect to server. Make sure the server is running on http://localhost:8000")
             break
         except Exception as e:
-            print(f"❌ Error: {e}")
+            print(f"Error: {e}")
         
         # Small delay between messages
         time.sleep(1)
     
-    print("\n✅ Chatbot test completed!")
+    print("\nChatbot test completed!")
 
-def test_health():
-    """Test the health endpoint"""
-    print("\n🏥 Testing health endpoint...")
-    try:
-        response = requests.get(f"{API_BASE_URL}/health")
-        if response.status_code == 200:
-            print("✅ Health check passed!")
-            print(f"Response: {response.json()}")
-        else:
-            print(f"❌ Health check failed: {response.status_code}")
-    except Exception as e:
-        print(f"❌ Health check error: {e}")
 
 if __name__ == "__main__":
     print("Starting FastAPI Chatbot Tests")
     print("Make sure the server is running: python main.py")
     print()
-    
-    # Test health first
-    test_health()
     
     # Test chatbot
     test_chatbot()

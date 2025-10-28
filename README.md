@@ -4,10 +4,11 @@ A simple OpenAI-powered chatbot with a beautiful web interface built with FastAP
 
 ## Features
 
-- 🤖 **OpenAI GPT-4o** integration
-- 💬 **Web Interface** - Beautiful, responsive chat UI
-- 🔄 **Conversation History** - Maintains context
-- 📱 **Mobile Friendly** - Works on all devices
+- **OpenAI GPT-4o** integration
+- **Web Interface** - Beautiful, responsive chat UI
+- **Conversation History** - Maintains context
+- **Mobile Friendly** - Works on all devices
+- **Clean Architecture** - Separated models, services, and API layers
 
 ## Quick Start
 
@@ -42,4 +43,7 @@ curl -X POST "http://localhost:8000/chat" \
 
 **API Documentation:**
 - http://localhost:8000/docs - Interactive API docs
-- http://localhost:8000/health - Health check
+
+**Testing:**
+- `python tests/test_chatbot.py` - Run automated tests
+- `python tests/chat_client.py` - Interactive chat client

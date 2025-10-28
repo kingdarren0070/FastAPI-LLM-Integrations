@@ -36,7 +36,7 @@ def chat_with_bot(message, conversation_history=None):
 
 def interactive_chat():
     """Start an interactive chat session"""
-    print("🤖 FastAPI Chatbot Client")
+    print("FastAPI Chatbot Client")
     print("=" * 40)
     print("Type 'quit' or 'exit' to end the conversation")
     print("Type 'clear' to clear conversation history")
@@ -49,7 +49,7 @@ def interactive_chat():
             user_input = input("You: ").strip()
             
             if user_input.lower() in ['quit', 'exit']:
-                print("Goodbye! 👋")
+                print("Goodbye!")
                 break
             elif user_input.lower() == 'clear':
                 conversation_history = []
@@ -62,23 +62,23 @@ def interactive_chat():
             result = chat_with_bot(user_input, conversation_history)
             
             if "error" in result:
-                print(f"❌ Error: {result['error']}")
+                print(f"Error: {result['error']}")
             else:
                 print(result['response'])
                 conversation_history = result['conversation_history']
                 
         except KeyboardInterrupt:
-            print("\nGoodbye! 👋")
+            print("\nGoodbye!")
             break
         except Exception as e:
-            print(f"❌ Unexpected error: {e}")
+            print(f"Unexpected error: {e}")
 
 def single_message(message):
     """Send a single message and print the response"""
     result = chat_with_bot(message)
     
     if "error" in result:
-        print(f"❌ Error: {result['error']}")
+        print(f"Error: {result['error']}")
     else:
         print(f"Bot: {result['response']}")
 
